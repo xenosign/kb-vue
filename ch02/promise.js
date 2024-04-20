@@ -16,10 +16,14 @@
 // });
 // console.log("## Promise 객체 생성!");
 
-const conditionFunc = () => {
-  const result = Math.random() * 10 > 3;
+function conditionFunc() {
+  const num = Math.random() * 10;
+  const result = num > 3;
+
+  console.log(num);
+
   return result;
-};
+}
 
 // let p = new Promise((resolve, reject) => {
 //   resolve("first!");
@@ -74,7 +78,7 @@ const conditionFunc = () => {
 //   });
 // });
 
-const promiseConditionFunc = new Promise((resolve, reject) => {
+let promiseConditionFunc = new Promise((resolve, reject) => {
   if (conditionFunc()) {
     resolve();
   } else {
@@ -103,3 +107,43 @@ async function asyncFunc() {
 }
 
 asyncFunc();
+
+// async function asyncFunc2() {
+//   try {
+//     console.log("first");
+
+//     await new Promise((resolve, reject) => {
+//       if (conditionFunc()) {
+//         resolve();
+//       } else {
+//         reject("ERR 발생");
+//       }
+//     });
+
+//     console.log("second");
+
+//     await new Promise((resolve, reject) => {
+//       if (conditionFunc()) {
+//         resolve();
+//       } else {
+//         reject("ERR 발생");
+//       }
+//     });
+
+//     console.log("third");
+
+//     await new Promise((resolve, reject) => {
+//       if (conditionFunc()) {
+//         resolve();
+//       } else {
+//         reject("ERR 발생");
+//       }
+//     });
+
+//     console.log("끝");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// asyncFunc2();
