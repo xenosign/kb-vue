@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model.number="num" />
+      <br />
+      <p>1 부터 입력한 값 까지의 합 : {{ sum }}</p>
+    </div>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { num: 0 };
+        },
+        computed: {
+          sum: function () {
+            console.log('Origin Num is ', this.num);
+            const n = this.num;
+            return (n * (n + 1)) / 2;
+          },
+          // 아래와 같은 방식도 가능
+          sum() {
+            console.log('Origin Num is ', this.num);
+            const n = this.num;
+            return (n * (n + 1)) / 2;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
