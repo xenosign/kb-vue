@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-text="msg">123</h1>
+      <img :src="imgSrc" alt="이미지" />
+      <input type="text" v-model="name" />
+      <input type="checkbox" v-model="checkBox1" />
+    </div>
+    <script>
+      const app = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            msg: 'test',
+            imgSrc:
+              'https://image.utoimage.com/preview/cp872722/2022/12/202212008462_500.jpg',
+            name: '',
+            checkBox1: 'no',
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
