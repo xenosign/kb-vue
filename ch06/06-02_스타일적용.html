@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button
+        :style="btnStyle"
+        @mouseover.stop="overEvent"
+        @mouseout.stop="outEvent"
+      >
+        데이터 스타일 버튼
+      </button>
+      <button :style="{backgroundColor: 'red', color: 'white'}">
+        인라인 스타일 버튼
+      </button>
+      <button :style="[myColor, myLayout]">인라인 배열 스타일 버튼</button>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            btnStyle: {},
+            myColor: {
+              backgroundColor: 'purple',
+              color: 'yellow',
+            },
+            myLayout: {
+              width: '150px',
+              height: '80px',
+              textAlign: 'center',
+            },
+          };
+        },
+        methods: {
+          overEvent() {
+            this.btnStyle.backgroundColor = 'orange';
+          },
+          outEvent() {
+            this.btnStyle.backgroundColor = 'skyblue';
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

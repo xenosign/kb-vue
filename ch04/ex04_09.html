@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      x : <input type="text" v-model.number="values.x" /><br />
+      y : <input type="text" v-model.number="values.y" /><br />
+      덧셈 결과 : {{sum}}
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { values: { x: 0, y: 0 }, sum: 0 };
+        },
+        watch: {
+          values: {
+            handler: function (current) {
+              var result = Number(current.x) + Number(current.y);
+              if (isNaN(result)) this.sum = 0;
+              else this.sum = result;
+            },
+            // 객체의 특성에 기인안 깊은 비교를 위해서 deep 속성 부여
+            deep: true,
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

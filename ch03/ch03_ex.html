@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-text="msg">123</h1>
+      <img v-if="count >10" :src="imgSrc" alt="이미지" />
+      <h1 v-else="count">보이냐?</h1>
+      <input type="text" v-model="name" />
+      <input type="checkbox" v-model="checkBox1" />
+      <input type="text" :value="korean" @input="changeName" />
+      <h1 v-show="count > 5">카운트가 5 이상일 때만 보임</h1>
+      <h2>{{ count }}</h2>
+      <button v-on:click="countUp">카운트 업</button>
+      <ul v-for="(el, idx) in arr" :key="idx">
+        <li>{{ el }}</li>
+      </ul>
+      <ul v-for="(val, key) in obj" :key="key">
+        <li>{{ `${key} : ${val}` }}</li>
+      </ul>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            msg: 'test',
+            imgSrc:
+              'https://image.utoimage.com/preview/cp872722/2022/12/202212008462_500.jpg',
+            name: '',
+            checkBox1: 'no',
+            korean: '',
+            count: 1,
+            arr: ['사과', '바나나', '수박'],
+            obj: {
+              name: '이효석',
+              isOld: 'yes',
+            },
+          };
+        },
+        methods: {
+          changeName(e) {
+            this.korean = e.target.value;
+          },
+          countUp() {
+            this.count++;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

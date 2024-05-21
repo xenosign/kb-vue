@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>계좌 잔고 : {{ balance }}</h1>
+      금액 : <input type="text" v-model="amount" ref="amountInput" />
+      <button v-on:click="deposit()">입금</button>
+      <button @click="withdraw()">출금</button>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            balance: 0,
+            amount: 0,
+          };
+        },
+        methods: {
+          deposit() {
+            this.balance += parseInt(this.amount);
+            this.amount = 0;
+          },
+          withdraw() {
+            if (this.amount > this.balance) {
+              this.$refs.amountInput.value = '';
+              this.$refs.amountInput.placeholder = '잔고가 부족합니다';
+              return;
+            }
+
+            this.balance -= parseInt(this.amount);
+            this.amount = 0;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

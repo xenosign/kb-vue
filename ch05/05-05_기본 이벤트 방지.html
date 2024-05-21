@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="https://naver.com" @click="ctxStop">이동</a>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        methods: {
+          ctxStop(e) {
+            if (!confirm('링크로 이동할까요?')) e.preventDefault();
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{num}}</h1>
+      <button v-on:click="() => this.num++">countUp</button>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            num: 0,
+          };
+        },
+        watch: {
+          num(cur, pre) {
+            console.log(pre, ' -> ', cur);
+          },
+        },
+        async mounted() {
+          const res = await fetch(
+            'https://infuser.odcloud.kr/oas/docs?namespace=15128091/v1'
+          );
+
+          console.log(await res.json());
+        },
+        updated() {
+          console.log('## updated');
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
