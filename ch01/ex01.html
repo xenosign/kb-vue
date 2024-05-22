@@ -4,19 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
     <div id="app">
       <h2>{{ message }}</h2>
+      <button @click="changeData">데이터 변경</button>
     </div>
   </body>
-  <script src="https://unpkg.com/vue"></script>
+
   <script>
-    let model = { message: 'Hello, Vue3!' };
     let vm = Vue.createApp({
       name: 'App',
       data() {
-        return model;
+        return {
+          message: 'Hello, Vue World!',
+        };
+      },
+      methods: {
+        changeData() {
+          this.message = 'data 를 바꿔 버렸단 말씀!';
+        },
       },
     }).mount('#app');
   </script>
