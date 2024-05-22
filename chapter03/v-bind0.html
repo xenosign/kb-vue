@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <img v-bind:src="imgSrc" />
+      <button v-on:click="changeImgSrc">이미지 변경</button>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            imgSrc:
+              'https://photo.coolenjoy.co.kr/data/editor/2008/20200813130955_aiqgbsrk.gif',
+          };
+        },
+        methods: {
+          changeImgSrc() {
+            this.imgSrc = 'https://pbs.twimg.com/media/EHTSuqsUwAA9nxk.png';
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

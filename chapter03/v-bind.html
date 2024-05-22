@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input v-bind:type="inputType" value="test" />
+      <button v-on:click="changeInputType">인풋 타입 변경</button>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            inputType: 'checkbox',
+          };
+        },
+        methods: {
+          changeInputType() {
+            this.inputType = 'radio';
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
