@@ -8,20 +8,18 @@
   </head>
   <body>
     <div id="app">
-      <input v-bind:type="inputType" value="test" />
-      <button v-on:click="changeInputType">인풋 타입 변경</button>
+      <h1>랜덤으로 생성된 숫자를 맞춰 보세요! {{ randNum }}</h1>
+      <h1>Up</h1>
+      <h1>Down</h1>
+      <h1>정답!</h1>
+      <input />
     </div>
     <script>
       const app = Vue.createApp({
         data() {
           return {
-            inputType: 'checkbox',
+            randNum: parseInt(Math.random() * 10),
           };
-        },
-        methods: {
-          changeInputType: () => {
-            this.inputType = 'radio';
-          },
         },
       }).mount('#app');
     </script>

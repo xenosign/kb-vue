@@ -8,3 +8,7 @@ obj.add = function (x, y) {
 obj.add(3, 4);
 console.log(obj); // { result: 0 }
 console.log(globalThis.result); // 7
+
+const o = {
+  get: () => {},
+};

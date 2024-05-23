@@ -8,19 +8,19 @@
   </head>
   <body>
     <div id="app">
-      <input v-bind:type="inputType" value="test" />
-      <button v-on:click="changeInputType">인풋 타입 변경</button>
+      <h1>{{ inputText }}</h1>
+      <input type="text" v-bind:value="inputText" @input="chagneInput" />
     </div>
     <script>
       const app = Vue.createApp({
         data() {
           return {
-            inputType: 'checkbox',
+            inputText: '',
           };
         },
         methods: {
-          changeInputType: () => {
-            this.inputType = 'radio';
+          chagneInput(e) {
+            this.inputText = e.target.value;
           },
         },
       }).mount('#app');

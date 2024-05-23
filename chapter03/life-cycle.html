@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>created() 에서 생성된 배열 출력</h1>
+      <ul>
+        <li v-for="item in arr">{{ item }}</li>
+      </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            arr: [],
+          };
+        },
+        async created() {
+          const tempArr = [];
+          for (let i = 0; i < 10; i++) {
+            tempArr.push(parseInt(Math.random() * 10));
+          }
+          this.arr = tempArr;
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

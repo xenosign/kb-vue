@@ -8,20 +8,18 @@
   </head>
   <body>
     <div id="app">
-      <input v-bind:type="inputType" value="test" />
-      <button v-on:click="changeInputType">인풋 타입 변경</button>
+      <h1>오늘 행운의 정도는 : {{ luck }}</h1>
+      <h1 v-if="luck > 8">오늘은 행운의 날!! 로또 살 각입니다!</h1>
+      <h1 v-else-if="luck > 5">오늘 운이 좋으시군요!!</h1>
+      <h1 v-else-if="luck > 2">평균적인 날입니다!</h1>
+      <h1 v-else="luck">아.........</h1>
     </div>
     <script>
       const app = Vue.createApp({
         data() {
           return {
-            inputType: 'checkbox',
+            luck: parseInt(Math.random() * 10),
           };
-        },
-        methods: {
-          changeInputType: () => {
-            this.inputType = 'radio';
-          },
         },
       }).mount('#app');
     </script>
