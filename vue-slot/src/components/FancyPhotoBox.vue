@@ -1,7 +1,7 @@
 <template>
-  <div class="magicBox">
-    <h1>무엇이든 예쁘게 담아주는 MagicBox</h1>
-    <slot></slot>
+  <div class="fancyPhotoBox">
+    <slot name="title"></slot>
+    <slot name="photo"></slot>
   </div>
 </template>
 
@@ -12,10 +12,9 @@ export default {
 </script>
 
 <style scoped>
-.magicBox {
+.fancyPhotoBox {
   text-align: center;
-  width: 500px;
-  padding: 30px;
+  padding: 30px 30px;
   border-radius: 30px;
   border: 10px solid #ccc;
   background-color: orange;

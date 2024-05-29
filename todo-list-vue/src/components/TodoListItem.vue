@@ -19,9 +19,10 @@
 <script>
 export default {
   name: 'TodoListItem',
-  props: {
-    todoItem: { type: Object, required: true },
-  },
+  props: ['todoItem'],
+  // props: {
+  //   todoItem: { type: Object, required: true },
+  // },
   emits: ['deleteTodo', 'toggleCompleted'],
 };
 </script>
