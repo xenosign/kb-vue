@@ -1,21 +1,10 @@
 <script setup>
-import ColorEmit from './components/ColorEmit.vue';
-import PropsList from './components/PropsList.vue';
-import PropsList2 from './components/PropsList2.vue';
-import SendNameComponent from './components/SendNameComponent.vue';
+import ChildComponent from './components/ChildComponent.vue';
 </script>
 
-<!-- <template>
-  <div>
-    <h1>너의 이름은 {{ name }}</h1>
-    <SendNameComponent @nameChanged="nameChangeHandler" />
-  </div>
-</template> -->
-
 <template>
-  <div :style="{ backgroundColor: color }">
-    <h1>저의 색상을 정해주세요!!</h1>
-    <ColorEmit @colorChange="colorChangeHandler" />
+  <div>
+    <ChildComponent :drilling="drilling" />
   </div>
 </template>
 
@@ -24,15 +13,13 @@ export default {
   name: 'App',
   data() {
     return {
-      color: '',
+      drilling: '으아아~~ 어디까지 내려가는거에요',
     };
   },
-  methods: {
-    colorChangeHandler(payload) {
-      this.color = payload.color;
-    },
+  provide() {
+    return {
+      fly: '훗! 한번에 와버렸슈',
+    };
   },
 };
 </script>
-
-<style scoped></style>
