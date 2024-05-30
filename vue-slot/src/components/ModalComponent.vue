@@ -1,7 +1,7 @@
 <template>
   <div class="modal-overlay" v-if="visible">
     <div class="modal">
-      <button class="close-button" @click="this.$emit('close')">X</button>
+      <button class="close-button" @click="sendClose">X</button>
       <div class="modal-content">
         <slot></slot>
       </div>
@@ -9,14 +9,23 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ModalComponent',
-  props: ['visible'],
-};
+<script setup>
+import { defineProps, defineEmits } from 'vue';
+
+const props = defineProps({
+  visible: {
+    type: Boolean,
+    required: true,
+  },
+});
+
+const emit = defineEmits(['close']);
+function sendClose() {
+  emit('close');
+}
 </script>
 
-<style>
+<style scopped>
 .modal-overlay {
   position: fixed;
   top: 0;

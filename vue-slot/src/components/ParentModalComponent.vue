@@ -1,7 +1,3 @@
-<script setup>
-import ModalComponent from './ModalComponent.vue';
-</script>
-
 <template>
   <div>
     <button @click="showModal">모달 열기</button>
@@ -16,25 +12,19 @@ import ModalComponent from './ModalComponent.vue';
   </div>
 </template>
 
-<script>
-export default {
-  components: {
-    ModalComponent,
-  },
-  data() {
-    return {
-      isModalVisible: false,
-    };
-  },
-  methods: {
-    showModal() {
-      this.isModalVisible = true;
-    },
-    hideModal() {
-      this.isModalVisible = false;
-    },
-  },
-};
+<script setup>
+import ModalComponent from './ModalComponent.vue';
+import { ref } from 'vue';
+
+const isModalVisible = ref(false);
+
+function showModal() {
+  isModalVisible.value = true;
+}
+
+function hideModal() {
+  isModalVisible.value = false;
+}
 </script>
 
 <style>

@@ -1,18 +1,19 @@
-<script setup>
-import Vue2Component from './components/Vue2Component.vue';
-import Vue3Component from './components/Vue3Component.vue';
-</script>
-
 <template>
   <div>
-    <Vue2Component />
-    <Vue3Component />
+    <h1>{{ msg }}</h1>
+    <Vue3Emit :rand="num" @send-msg="emitHandler" />
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App',
-  components: { Vue2Component, Vue3Component },
-};
+<script setup>
+import Vue3Emit from './components/Vue3Emit.vue';
+import { ref, defineProps } from 'vue';
+
+const rand = parseInt(Math.random() * 20);
+const num = ref(rand);
+const msg = ref('랜덤 숫자를 맞춰 주세요');
+
+function emitHandler(value) {
+  msg.value = value;
+}
 </script>
