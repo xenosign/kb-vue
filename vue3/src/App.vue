@@ -1,25 +1,18 @@
 <script setup>
-import ChildComponent from './components/ChildComponent.vue';
+import Vue2Component from './components/Vue2Component.vue';
+import Vue3Component from './components/Vue3Component.vue';
 </script>
 
 <template>
   <div>
-    <ChildComponent :drilling="drilling" />
+    <Vue2Component />
+    <Vue3Component />
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
-  data() {
-    return {
-      drilling: '으아아~~ 어디까지 내려가는거에요',
-    };
-  },
-  provide() {
-    return {
-      fly: '훗! 한번에 와버렸슈',
-    };
-  },
+  components: { Vue2Component, Vue3Component },
 };
 </script>
