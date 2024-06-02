@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/pages/Home.vue';
 import Dynamic from '@/pages/Dynamic.vue';
+import About from '@/pages/About.vue';
+import NotFound from '@/pages/NotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,13 +15,17 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      component: () => import('@/pages/About.vue'),
+      component: About,
     },
     {
       path: '/dynamic/:mood',
       name: 'Dynamic',
       component: Dynamic,
-      props: true, // URL 파라미터를 컴포넌트의 props로 전달
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFound,
     },
   ],
 });
