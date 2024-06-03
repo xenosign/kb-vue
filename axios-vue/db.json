@@ -1,0 +1,38 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "todo": "뉴진스 보기",
+      "desc": "언젠간 보고야 만다.... T-T",
+      "done": false
+    },
+    {
+      "id": "2",
+      "todo": "페이커 숭배하기",
+      "desc": "1일 3숭배 합니다. 여러분 숭배할 시간입니다.",
+      "done": false
+    },
+    {
+      "id": "3",
+      "todo": "Vue 학습",
+      "desc": "Vue 부수기",
+      "done": false
+    },
+    {
+      "id": "4",
+      "todo": "코테 정복",
+      "desc": "취업용 코테 까지만 퐈이팅!!",
+      "done": false
+    }
+  ],
+  "users": [
+    {
+      "id": "12",
+      "password": "12"
+    },
+    {
+      "id": "xenosign",
+      "password": "1234"
+    }
+  ]
+}
