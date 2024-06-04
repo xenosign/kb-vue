@@ -1,19 +1,5 @@
 <template>
-  <div>
-    <li>
-      <span
-        :style="
-          todoItem.done
-            ? { textDecoration: 'line-through' }
-            : { textDecoration: 'none' }
-        "
-      >
-        {{ todoItem.todo }} / {{ todoItem.desc }}
-        {{ todoItem.done ? '(완료)' : '' }}
-      </span>
-      <button @click.stop="$emit('deleteTodo', todoItem.id)">삭제</button>
-    </li>
-  </div>
+  <div></div>
 </template>
 
 <script setup>
