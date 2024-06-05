@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/pages/Home.vue';
-import Counter from '@/pages/Counter.vue';
+import Counter from '@/components/Counter.vue';
 import Todo from '@/pages/Todo.vue';
 import TodoList from '@/pages/TodoList.vue';
 

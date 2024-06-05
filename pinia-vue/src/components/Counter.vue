@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useCounterStore } from '@/stores/counter';
 
 const counterStore = useCounterStore();

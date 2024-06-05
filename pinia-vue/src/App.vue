@@ -1,17 +1,13 @@
 <template>
   <div>
-    <nav>
-      <router-link to="/">Home</router-link>
-      &nbsp;
-      <router-link to="/counter">Counter</router-link>
-      &nbsp;
-      <router-link to="/todo">Todo</router-link>
-      &nbsp;
-      <router-link to="/todolist">TodoList</router-link>
-    </nav>
-
-    <router-view />
+    <!-- <Counter /> -->
+    <!-- <Date /> -->
+    <Todo />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import Counter from '@/components/Counter.vue';
+import Date from '@/components/Date.vue';
+import Todo from '@/pages/Todo.vue';
+</script>
