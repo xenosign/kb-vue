@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- <Counter /> -->
-    <!-- <Date /> -->
-    <Todo />
+    <Date />
+    <!-- <Todo /> -->
   </div>
 </template>
 

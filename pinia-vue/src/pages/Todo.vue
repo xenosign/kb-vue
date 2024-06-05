@@ -7,7 +7,7 @@
     <button @click="addTodoHandler">추가</button>
     <hr />
     <ul>
-      <li v-for="todoItem in todoList">
+      <li v-for="todoItem in todoList" :key="todoItem.id">
         <span @click="toggleDone(todoItem.id)">
           {{ todoItem.todo }} {{ todoItem.done ? '(완료)' : '' }}
         </span>
