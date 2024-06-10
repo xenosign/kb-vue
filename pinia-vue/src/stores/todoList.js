@@ -67,7 +67,7 @@ export const useTodoListStore = defineStore('todoList', () => {
       fetchTodoList();
     } catch (error) {
       alert('Todolist 토글 작업 중 ERR 발생');
-      console.log(err);
+      console.log(error);
     }
   }
 
