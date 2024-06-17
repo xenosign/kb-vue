@@ -18,8 +18,6 @@ const fetchTodoDetail = async () => {
 
     if (fetchTodoDetailRes.status !== 200) alert('todo detail 받기 실패');
 
-    console.log(fetchTodoDetailRes.data);
-
     todo.value = fetchTodoDetailRes.data;
   } catch (error) {
     console.log(error);
@@ -35,7 +33,7 @@ fetchTodoDetail(); //초기 데이터 로드 함수 호출
 
 <template>
   <div>
-    <h2>제목: {{ todo.title }}</h2>
+    <h2>제목: {{ todo.todo }}</h2>
     <hr />
     {{ todo.desc }}
     <div>
