@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 // 주소에 매칭 시킬 컴포넌트 불러오기, 컴포넌트 이므로 대문자로 시작하며 해당 이름은 아래의 이름과 일치 해야만 한다
 import Home from '@/pages/Home.vue';
 import Todo from '@/pages/Todo.vue';
+import TodoDetail from '@/pages/TodoDetail.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,6 +20,7 @@ const router = createRouter({
       name: 'todo',
       component: Todo,
     },
+    { path: '/todo/:id', name: 'todo/id', component: TodoDetail },
   ],
 });
 
