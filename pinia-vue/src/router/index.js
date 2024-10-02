@@ -3,6 +3,7 @@ import Home from '@/pages/Home.vue';
 import Counter from '@/components/Counter.vue';
 import Todo from '@/pages/Todo.vue';
 import TodoList from '@/pages/TodoList.vue';
+import KakaoLoginHandler from '@/components/KakaoLoginHandler.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,6 +12,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/oauth/kakao',
+      name: 'KakaoLoginHandler',
+      component: KakaoLoginHandler,
     },
     {
       path: '/counter',
