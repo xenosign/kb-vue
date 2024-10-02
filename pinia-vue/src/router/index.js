@@ -4,6 +4,7 @@ import Counter from '@/components/Counter.vue';
 import Todo from '@/pages/Todo.vue';
 import TodoList from '@/pages/TodoList.vue';
 import KakaoLoginHandler from '@/components/KakaoLoginHandler.vue';
+import Chat from '@/pages/Chat.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +13,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: Chat,
     },
     {
       path: '/oauth/kakao',

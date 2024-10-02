@@ -9,11 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/sockjs-client": "^1.5.4",
     "aos": "^2.3.4",
     "axios": "^1.7.2",
     "pinia": "^2.1.7",
+    "sockjs-client": "^1.6.1",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "webstomp-client": "^1.2.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
