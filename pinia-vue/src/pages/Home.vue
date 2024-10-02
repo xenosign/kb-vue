@@ -1,53 +1,14 @@
 <template>
-  <div class="chat-container">
-    <h2>Chat Room</h2>
-
-    <div v-for="message in messages" :key="message.id" class="message">
-      <strong>{{ message.sender }}:</strong> {{ message.content }}
-    </div>
-
-    <div class="input-container">
-      <input
-        v-model="newMessage"
-        @keyup.enter="sendMessage"
-        placeholder="Type a message..."
-        :disabled="!isConnected"
-      />
-      <button @click="sendMessage" :disabled="!isConnected">Send</button>
-    </div>
+  <div>
+    <h1>Kakao</h1>
+    <a :href="KAKAO_AUTH_URL">
+      <img src="@/assets/kakao_login.png" />
+    </a>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import Stomp from 'webstomp-client';
-import SockJS from 'sockjs-client';
-
-function connect() {
-  const socket = new SockJS('http://localhost:8080/ws');
-  const stompClient = Stomp.over(socket);
-  stompClient.connect(
-    {},
-    function (frame) {
-      console.log('Connected: ' + frame);
-      stompClient.subscribe('/topic/messages', function (message) {
-        showMessage(JSON.parse(message.body));
-      });
-    },
-    function (error) {
-      console.log('STOMP error ' + error);
-      setTimeout(connect, 5000);
-    }
-  );
-}
-
-onMounted(() => {
-  connect();
-});
-
-onUnmounted(() => {});
+const KAKAO_CLIENT_ID = '043c443064dbd3c5b25caf500122a5f8';
+const KAKAO_REDIRECT_URI = 'http://localhost:5173/oauth/kakao';
+const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
 </script>
-
-<style scoped>
-/* 스타일은 이전과 동일 */
-</style>

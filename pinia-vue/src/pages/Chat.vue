@@ -1,12 +1,11 @@
 <template>
   <div class="chat-container">
     <h2>Chat Room</h2>
-    <div v-if="isConnected" class="message-container">
-      <div v-for="message in messages" :key="message.id" class="message">
-        <strong>{{ message.sender }}:</strong> {{ message.content }}
-      </div>
+
+    <div v-for="message in messages" :key="message.id" class="message">
+      <strong>{{ message.sender }}:</strong> {{ message.content }}
     </div>
-    <div v-else class="connecting-message">Connecting to chat...</div>
+
     <div class="input-container">
       <input
         v-model="newMessage"
@@ -24,92 +23,31 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import Stomp from 'webstomp-client';
 import SockJS from 'sockjs-client';
 
-const stompClient = ref(null);
-const isConnected = ref(false);
-const messages = ref([]);
-const newMessage = ref('');
-const username = ref('User' + Math.floor(Math.random() * 1000));
-
-const connectToWebSocket = () => {
+function connect() {
   const socket = new SockJS('http://localhost:8080/ws');
-  stompClient.value = Stomp.over(socket);
-
-  stompClient.value.connect(
+  const stompClient = Stomp.over(socket);
+  stompClient.connect(
     {},
-    (frame) => {
-      isConnected.value = true;
+    function (frame) {
       console.log('Connected: ' + frame);
-      stompClient.value.subscribe('/topic/messages', onMessageReceived);
+      stompClient.subscribe('/topic/messages', function (message) {
+        showMessage(JSON.parse(message.body));
+      });
     },
-    (error) => {
-      console.log('Error: ' + error);
-      isConnected.value = false;
+    function (error) {
+      console.log('STOMP error ' + error);
+      setTimeout(connect, 5000);
     }
   );
-};
-
-const onMessageReceived = (payload) => {
-  const message = JSON.parse(payload.body);
-  messages.value.push(message);
-};
-
-const sendMessage = () => {
-  if (newMessage.value && stompClient.value) {
-    const message = {
-      sender: username.value,
-      content: newMessage.value,
-    };
-    stompClient.value.send('/app/chat', JSON.stringify(message), {});
-    newMessage.value = '';
-  }
-};
+}
 
 onMounted(() => {
-  connectToWebSocket();
+  connect();
 });
 
-onUnmounted(() => {
-  if (stompClient.value) {
-    stompClient.value.disconnect();
-  }
-});
+onUnmounted(() => {});
 </script>
 
 <style scoped>
-.chat-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.message-container {
-  height: 300px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.message {
-  margin-bottom: 5px;
-}
-
-.input-container {
-  display: flex;
-}
-
-input {
-  flex-grow: 1;
-  padding: 5px;
-  margin-right: 10px;
-}
-
-button {
-  padding: 5px 10px;
-}
-
-.connecting-message {
-  color: #666;
-  font-style: italic;
-}
+/* 스타일은 이전과 동일 */
 </style>
